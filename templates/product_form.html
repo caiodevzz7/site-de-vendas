@@ -1,0 +1,49 @@
+{% extends "admin_base.html" %}
+{% block title %}{{ 'Editar produto' if is_edit else 'Novo produto' }}{% endblock %}
+{% block content %}
+<section class="form-page">
+  <a class="back-link" href="{{ url_for('admin') }}">← Voltar aos produtos</a>
+  <div class="eyebrow"><span class="eyebrow-dot"></span> {{ 'ATUALIZAR CATÁLOGO' if is_edit else 'ADICIONAR AO CATÁLOGO' }}</div>
+  <h1>{{ 'Editar produto.' if is_edit else 'Novo produto.' }}</h1>
+  <p class="form-intro">Preencha os detalhes que serão exibidos na vitrine.</p>
+  <form method="post" class="admin-form product-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="form-field">
+      <label for="name">Nome do produto <span>*</span></label>
+      <input id="name" name="name" maxlength="80" required value="{{ product.get('name', '') }}" placeholder="Ex.: Fruta Kitsune" />
+      {% if errors.get('name') %}<small class="field-error">{{ errors.name }}</small>{% endif %}
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="category">Categoria <span>*</span></label>
+        <select id="category" name="category" required>
+          <option value="">Selecione</option>
+          {% for category in categories %}<option value="{{ category }}" {% if product.get('category') == category %}selected{% endif %}>{{ category }}</option>{% endfor %}
+        </select>
+        {% if errors.get('category') %}<small class="field-error">{{ errors.category }}</small>{% endif %}
+      </div>
+      <div class="form-field">
+        <label for="price">Preço</label>
+        <input id="price" name="price" maxlength="40" value="{{ product.get('price', '') }}" placeholder="Ex.: R$ 40,00" />
+        <small>O valor será mostrado exatamente como digitado.</small>
+        {% if errors.get('price') %}<small class="field-error">{{ errors.price }}</small>{% endif %}
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="description">Descrição</label>
+      <textarea id="description" name="description" maxlength="500" rows="4" placeholder="Detalhes que ajudam a identificar o item.">{{ product.get('description', '') }}</textarea>
+      {% if errors.get('description') %}<small class="field-error">{{ errors.description }}</small>{% endif %}
+    </div>
+    <div class="form-field">
+      <label for="image_url">Endereço da imagem <span class="optional">OPCIONAL</span></label>
+      <input id="image_url" name="image_url" maxlength="500" type="url" value="{{ product.get('image_url', '') }}" placeholder="https://..." />
+      {% if errors.get('image_url') %}<small class="field-error">{{ errors.image_url }}</small>{% endif %}
+    </div>
+    <div class="form-checks">
+      <label class="check-row"><input type="checkbox" name="available" {% if product.get('available', 1) %}checked{% endif %} /> <span><strong>Exibir na vitrine</strong><small>Desmarque para ocultar sem excluir o produto.</small></span></label>
+      <label class="check-row"><input type="checkbox" name="featured" {% if product.get('featured', 0) %}checked{% endif %} /> <span><strong>Destacar produto</strong><small>Itens em destaque aparecem primeiro na vitrine.</small></span></label>
+    </div>
+    <div class="form-actions"><button class="button button--primary" type="submit">{{ 'Salvar alterações' if is_edit else 'Adicionar produto' }}</button><a href="{{ url_for('admin') }}">Cancelar</a></div>
+  </form>
+</section>
+{% endblock %}
