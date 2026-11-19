@@ -108,11 +108,10 @@
             </article>
             <article class="category-card category-card--fruit" data-category="frutas">
               <div class="card-top"><span class="card-index">03 / 04</span><span class="card-arrow" aria-hidden="true">↗</span></div>
-              <div class="category-art category-art--items category-art--physical" role="list" aria-label="Tabela de frutas físicas">
-                {% for filename, price in physical_items %}
-                <div class="mini-product" role="listitem" aria-label="Fruta física, {{ price }}"><img src="{{ url_for('static', filename='assets/items/' ~ filename) }}" alt="" loading="lazy" /><span>{{ price }}</span></div>
-                {% endfor %}
-              </div>
+              <a class="category-art category-art--catalog" href="{{ url_for('static', filename='assets/frutas-fisicas.png') }}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar tabela de frutas físicas">
+                <img src="{{ url_for('static', filename='assets/frutas-fisicas.png') }}" alt="Tabela Pixel Plaza de frutas físicas, com preços de 100,00; 90,00; 25,00; 14,00; 13,00; 10,00; 15,00; 9,00; 8,00; 8,00; 6,00 e 6,00." loading="lazy" />
+                <span class="image-hint">CLIQUE PARA AMPLIAR ↗</span>
+              </a>
               <div class="card-content"><div class="card-kicker">PARA A SUA JORNADA</div><h3>Frutas físicas</h3><p>Frutas para trocar, colecionar e levar para sua próxima aventura.</p><a href="https://discord.gg/pixelplaza" target="_blank" rel="noopener noreferrer" class="card-link">Consultar no Discord <span aria-hidden="true">↗</span></a></div>
             </article>
             <article class="category-card category-card--perma" data-category="permanentes">

@@ -31,6 +31,6 @@ Abra `http://127.0.0.1:5000` para ver a vitrine e `http://127.0.0.1:5000/admin/l
 
 ## Catálogo e imagens
 
-O painel aceita preços como texto para preservar a formatação escolhida pela loja. Use o campo de imagem para informar um endereço `https://` de uma imagem de produto. As tabelas visuais de Gamepasses e Skins estão em `static/assets/`; os catálogos de frutas usam os ícones de `static/assets/items/` e os preços enviados.
+O painel aceita preços como texto para preservar a formatação escolhida pela loja. Use o campo de imagem para informar um endereço `https://` de uma imagem de produto. As tabelas visuais de Gamepasses, Skins e Frutas físicas estão em `static/assets/`; o catálogo de frutas permanentes usa os ícones de `static/assets/items/` e os preços enviados.
 
 Para publicar, use um serviço compatível com aplicações Python/Flask e configure as variáveis de ambiente nele. O repositório contém o código-fonte; o GitHub Pages não executa Flask.

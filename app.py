@@ -34,21 +34,6 @@ CATEGORIES = (
     "Outros",
 )
 
-PHYSICAL_CATALOG = (
-    ("129930-dragonwest.png", "100,00"),
-    ("481301-dragoneast.png", "90,00"),
-    ("72523-kitsune.png", "25,00"),
-    ("109777-yetifruit.png", "14,00"),
-    ("988436-tigerfruit.png", "13,00"),
-    ("580043-lightingfruit.png", "10,00"),
-    ("589002-controlfruit.png", "15,00"),
-    ("707763-darkfruit.png", "9,00"),
-    ("778421-trexfruit.png", "8,00"),
-    ("795619-doughfruit.png", "8,00"),
-    ("887925-sandfruit.png", "6,00"),
-    ("440709-portalfruit.png", "6,00"),
-)
-
 PERMANENT_CATALOG = (
     ("129930-dragonwest.png", "160,00"),
     ("899308-galaxyemperyeankitsune.png", "128,00"),
@@ -123,7 +108,6 @@ def create_app() -> Flask:
         return render_template(
             "index.html",
             products=products,
-            physical_items=PHYSICAL_CATALOG,
             permanent_items=PERMANENT_CATALOG,
         )
 
